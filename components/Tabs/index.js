@@ -15,16 +15,17 @@ axios.get("https://lambda-times-backend.herokuapp.com/topics")
         response.data.topics.forEach(items => {
             topical.push(items);
         })
+        topical.forEach(items => {
+            tabs.append(tabCreator(items));
+        })
     })
     .catch(error => {
         console.log(error);
     })
 
-topical.forEach(items => {
-    tabs.append(tabCreator(items));
-})
 
-function tabCreatpr(data) {
+
+function tabCreator(data) {
     const tab = document.createElement("div");
     tab.classList.add("tab");
     tab.textContent = data;
